@@ -21,7 +21,7 @@ object AadharDatasetAnalysis {
 
     val datamap = aadharDataWithoutHeader.map(rec => rec.split(","))
 
-    val dataRDD = datamap.map(rec => Data(rec(0), rec(1), rec(2), rec(3), rec(4), rec(5), rec(6), rec(7).toInt,
+    val dataRDD = datamap.map(rec => caseData(rec(0), rec(1), rec(2), rec(3), rec(4), rec(5), rec(6), rec(7).toInt,
       rec(8).toInt, rec(9).toInt, rec(10).toInt, rec(11).toInt))
 
     val dataDF = dataRDD.toDF()
@@ -78,7 +78,7 @@ object AadharDatasetAnalysis {
 
   }
 
-  case class Data(Registrar: String, EnrolmentAgency: String, State: String, District: String, SubDistrict: String,
+  case class caseData(Registrar: String, EnrolmentAgency: String, State: String, District: String, SubDistrict: String,
                   PinCode: String, Gender: String, Age: Int, AadharGenerated: Int, EnrolmentRejected: Int, EmailProvided: Int,
                   MobileNumProvided: Int)
 }
